@@ -1,12 +1,14 @@
 # Build Azure cloud deployment with Terraform modules and template
 ![Terraform Azure Deployment](images/Azure-Terraform-Deploy.png)
 File Structure
+```
 - modules
     <module>
         - <module.tf>, variables.tf, output.tf
 main.tf
 output.tf
 variables
+```
 
 load credential and parrameter from tfvars file as below
 ```
@@ -21,8 +23,9 @@ collect credential information or create service principle with az command or co
 ```
 az account show
 ```
+```
 az ad sp show -id <id>
-
+```
 # Create an SP with contributor access to your sub
 sp_info=$(az ad sp create-for-rbac \
   --name mr-dr-tacos --role contributor \
@@ -31,7 +34,9 @@ sp_info=$(az ad sp create-for-rbac \
 
 ### Run terraform 
 ```
+```
 terraform plan -var-file <path to tfvars> -out=<stage>.plan
 terraform apply <stage>.plan
+```
 
 
