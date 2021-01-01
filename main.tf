@@ -42,5 +42,5 @@ resource "azurerm_resource_group" "rg" {
 }
 resource "local_file" "azure_config" {
     content = local.azure_config
-    filename = "local_template.txt"
+    filename = "local_template.out"
 }

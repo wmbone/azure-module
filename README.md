@@ -35,8 +35,20 @@ sp_info=$(az ad sp create-for-rbac \
 ### Run terraform 
 ```
 ```
+terraform init
 terraform plan -var-file <path to tfvars> -out=<stage>.plan
 terraform apply <stage>.plan
 ```
+
+reference:
+
+[Azure quickstart template](https://github.com/Azure/azure-quickstart-templates)
+
+[Terraform Azurerm provider example](https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples)
+
+[Azure networking](https://github.com/binals/azurenetworking)
+
+
+
 
 
