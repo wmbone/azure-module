@@ -1,0 +1,9 @@
+*.plan
+*/*.plan
+*.out
+*/*.out
+*.tfvars
+*/*.tfvars
+*.tfstate
+*/*.tfstate
+*.tfstate*

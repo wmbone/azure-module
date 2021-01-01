@@ -1,0 +1,1 @@
+# VM machine image list output
