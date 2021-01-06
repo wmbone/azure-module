@@ -53,10 +53,33 @@ variable "azure_tenant_id"{
   description = "Tenanat ID"
 }
 
+variable "vnet_name"{
+  type = string
+  description = "vnet_name"
+}
+
+variable "vnet_tags"{
+  type = string
+  description = "vnet_tags"
+  default = "devops-vnet"
+}
+
+variable "vnet_subnet_count"{
+  type = number
+  description = "number of subnet on vnet"
+  default = "1"
+}
+
+variable "vnet_address_space"{
+  description = "VNet address space"
+  default = ["192.168.10.0/20"]
+}
+
+
 locals {
   azure_config= <<-EOT
       resource_group_name = "dev"
-      location = "australia"
+      location = "australiasoutheast"
       client_certificate_path = ${var.azure_client_certificate_path}
       client_certificate_password = ${var.azure_client_certificate_password}
       subscription_id = ${var.azure_subscription_id}

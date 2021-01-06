@@ -33,16 +33,25 @@ provider "azurerm" {
   
 }
 
+#################################
+# Data
+#################################
+
+
 #############################################################################
 # RESOURCES Azurerm_resource_group has two arguments: name and location
 #############################################################################
-resource "azurerm_resource_group" "rg" {
-  name = "config.resource_group_name"
+resource "azurerm_resource_group" "terraform" {
+  name = var.resource_group_name
   location = var.location
 }
 resource "local_file" "azure_config" {
     content = local.azure_config
     filename = "local_template.out"
+}
+resource "random_integer" "rand" {
+  min = 10000
+  max = 99999
 }
 
 ##########
@@ -51,18 +60,23 @@ resource "local_file" "azure_config" {
 
 
 module "vnet" {
-  source = " modules/vnet"
-  version = "~>2.0"
-  cidr
+  source = "./modules/vnet"
+  name = var.vnet_name
+  location = var.location
+  tags = var.vnet_tags
+  resource_group_name = var.resource_group_name
+  vnet_subnet_count = var.vnet_subnet_count
 
-  tags = var.vpc_tags 
+  //   var.vnet_subnet_count >= 0
+  // }
+  // vnet_address_space = var.vnet_address_space
 }
 
-module "vm" {
-  source = " modules/virtual-network"
-  version = "~>2.0 "
+// module "vm" {
+//   source = " modules/virtual-network"
+//   version = "~>2.0 "
 
-  name = prefix
+//   name = prefix
 
-  tags = var.vm_tags
-}
+//   tags = var.vm_tags
+// }

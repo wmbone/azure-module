@@ -1,14 +1,13 @@
-variable "subscriptionid" {
+variable "name" {}
 
+variable "common_tags" {
+  default ={}
 }
-variable "clientid" {
 
-}
-variable "clientsecret" {
+variable "location" {}
 
-}variable "tenantid" {
+variable "tags" {}
 
-}
-variable "location" {
-  default = "West US"
-}
+variable "resource_group_name" {}
+
+variable "vnet_subnet_count" {}
