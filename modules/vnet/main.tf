@@ -1,12 +1,11 @@
  
+# Azure Resource Manager Terraform provider
 provider "azurerm" {
    subscription_id = "${var.subscriptionid}"
    client_id       = "${var.clientid}"
    client_secret   = "${var.clientsecret}"
    tenant_id       = "${var.tenantid}"
 }
-
-provider "azurerm" {}
 
 # Create a resource group
 resource "azurerm_resource_group" "satya" {

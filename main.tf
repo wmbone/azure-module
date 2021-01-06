@@ -44,3 +44,25 @@ resource "local_file" "azure_config" {
     content = local.azure_config
     filename = "local_template.out"
 }
+
+##########
+# modules
+##########
+
+
+module "vnet" {
+  source = " modules/vnet"
+  version = "~>2.0"
+  cidr
+
+  tags = var.vpc_tags 
+}
+
+module "vm" {
+  source = " modules/virtual-network"
+  version = "~>2.0 "
+
+  name = prefix
+
+  tags = var.vm_tags
+}
