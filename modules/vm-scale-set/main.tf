@@ -25,7 +25,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
   name                            = "${var.prefix}-vmss"
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
-  sku                             = "Standard_F2"
+  # sku                             = "Standard_F2"
+  # B1S VM on free tier for 750 hours
   instances                       = 3
   admin_username                  = "adminuser"
   admin_password                  = "P@ssw0rd1234!"

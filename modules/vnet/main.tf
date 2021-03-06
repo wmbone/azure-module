@@ -5,19 +5,12 @@ resource "azurerm_virtual_network" "dev" {
   address_space       = ["192.168.10.0/20"]
   location            = var.location
   resource_group_name = var.resource_group_name
-
+  count = var.subnet_count > 0? var.subnet_count:0
   subnet {
-    name           = "subnet1"
-    address_prefix = "192.168.10.0/24"
+    //count = var.subnet_count > 0? var.subnet_count:0
+    name = "subnet${count.index}"
+    address_prefix = "cidrsubnet(var.address_space,16?,count.index?)"
+
   }
 
-  subnet {
-    name           = "subnet2"
-    address_prefix = "192.168.11.0/24"
-  }
-
-  subnet {
-    name           = "subnet3"
-    address_prefix = "192.168.12.0/24"
-  }
 }

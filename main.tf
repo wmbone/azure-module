@@ -16,10 +16,18 @@
 #############################################################################
 # PROVIDERS
 #############################################################################
-#
+// since 0.13 provider version will deprecated, use required_providers in Terraform instead
+terraform {
+  required_providers {
+    azurerm = { 
+      source = "hashicorp/azurerm"
+      version = "~>2.0"
+    }
+  }
+}
 
 provider "azurerm" {
-  version = "~>2.0"
+//  version = "~>2.0"
   features {}
     // resource_group_name = "dev"
     // location = "australiasoutheast"
@@ -59,22 +67,12 @@ resource "random_integer" "rand" {
 ##########
 
 
-module "vnet" {
-  source = "./modules/vnet"
-  name = var.vnet_name
-  location = var.location
-  tags = var.vnet_tags
-  resource_group_name = var.resource_group_name
-  vnet_subnet_count = var.vnet_subnet_count
 
-  //   var.vnet_subnet_count >= 0
-  // }
-  // vnet_address_space = var.vnet_address_space
-}
 
 // module "vm" {
 //   source = " modules/virtual-network"
 //   version = "~>2.0 "
+# B1S VM on free tier for 750 hours
 
 //   name = prefix
 

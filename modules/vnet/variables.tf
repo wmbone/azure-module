@@ -10,4 +10,6 @@ variable "tags" {}
 
 variable "resource_group_name" {}
 
-variable "vnet_subnet_count" {}
+variable "subnet_count" {}
+
+variable "address_space" {}

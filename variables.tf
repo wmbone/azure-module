@@ -1,3 +1,5 @@
+//==================================
+// VM variables
 variable "config" {
   type = map
 
@@ -20,6 +22,12 @@ variable "ubuntu_os_value" {
         "20.04-LTS" = "20.04-LTS"
     }
 }
+// variable "ami_id"{
+//  default = 01234
+//}
+
+//=====================================
+// Resource group vairables
 variable "resource_group_name" {
   type = string
   description = " Azure Resource Group Name"
@@ -29,7 +37,9 @@ variable "location" {
   type = string
   description = "Azure location"
   default = "australiasoutheast"
-} 
+}
+//======================================
+// Management 
 variable "azure_client_certificate_path" {
   type = string
   description = "client certificate path"
@@ -52,10 +62,12 @@ variable "azure_tenant_id"{
   type = string
   description = "Tenanat ID"
 }
-
+//==================================
+// Vnet variables
 variable "vnet_name"{
   type = string
   description = "vnet_name"
+  default = "devops-vnet"
 }
 
 variable "vnet_tags"{
@@ -67,15 +79,16 @@ variable "vnet_tags"{
 variable "vnet_subnet_count"{
   type = number
   description = "number of subnet on vnet"
-  default = "1"
+  default = "2"
 }
 
 variable "vnet_address_space"{
   description = "VNet address space"
-  default = ["192.168.10.0/20"]
+  default = ["192.168.0.0/16"]
 }
 
-
+//==============================
+// Locals variables
 locals {
   azure_config= <<-EOT
       resource_group_name = "dev"
